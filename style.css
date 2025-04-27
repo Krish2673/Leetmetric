@@ -11,7 +11,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
+    overflow-y: auto;
 }
 
 .container {
@@ -51,6 +52,9 @@ h1 {
 
 #search-button {
     width: 10%;
+    padding: 0.4rem;
+    cursor: pointer;
+    
 }
 
 /* .stats {
@@ -118,4 +122,23 @@ h4{
     border-radius: 10px;
     font-size: 1rem;
     min-height: 4rem;
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+    }
+
+    .user-input {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    #username, #search-button {
+        width: 100%;
+    }
+
+    .card {
+        width: 100%;
+    }
 }

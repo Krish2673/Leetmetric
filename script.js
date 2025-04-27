@@ -115,6 +115,10 @@ document.addEventListener("DOMContentLoaded",function() {
 
     }
 
+    userInput.addEventListener('keydown', (e) => {
+        if (e.key === "Enter") search.click();
+    });    
+
     search.addEventListener('click',function() {
         const username = userInput.value;
         console.log("Logging in : ",username);
