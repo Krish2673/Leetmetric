@@ -11,6 +11,9 @@ document.addEventListener("DOMContentLoaded",function() {
     const mediumLabel = document.getElementById("medium-label");
     const hardLabel = document.getElementById("hard-label");
     const cardStatsContainer = document.querySelector(".cards");
+    const avatar = document.getElementById("avatar");
+    const rank = document.getElementById("rank");
+    const contestRating = document.getElementById("contest-rating");
 
     function validateUsername(username) {
         if(username.trim() === "") {
@@ -39,9 +42,35 @@ document.addEventListener("DOMContentLoaded",function() {
             myHeaders.append("content-type", "application/json");
 
             const graphql = JSON.stringify({
-                query: "\n    query userSessionProgress($username: String!) {\n  allQuestionsCount {\n    difficulty\n    count\n  }\n  matchedUser(username: $username) {\n    submitStats {\n      acSubmissionNum {\n        difficulty\n        count\n        submissions\n      }\n      totalSubmissionNum {\n        difficulty\n        count\n        submissions\n      }\n    }\n  }\n}\n    ",
-                variables: { "username": `${username}` }
-            })
+                query: `
+                    query userSessionProgress($username: String!) {
+                      allQuestionsCount {
+                        difficulty
+                        count
+                      }
+                      matchedUser(username: $username) {
+                        profile {
+                          ranking
+                          userAvatar
+                        }
+                        submitStats {
+                          acSubmissionNum {
+                            difficulty
+                            count
+                            submissions
+                          }
+                          totalSubmissionNum {
+                            difficulty
+                            count
+                            submissions
+                          }
+                        }
+                      }
+                    }
+                `,
+                variables: { username }
+            });
+            
             const requestOptions = {
                 method: "POST",
                 headers: myHeaders,
@@ -112,6 +141,13 @@ document.addEventListener("DOMContentLoaded",function() {
                     <p>${data.value}</p>
                     </div>`
         ).join("")
+
+        avatar.src = parsedData.data.matchedUser.profile.userAvatar;
+        rank.textContent = `Global Rank: ${parsedData.data.matchedUser.profile.ranking}`;
+        contestRating.textContent = `Contest Rating: ${parsedData.data.matchedUser.profile.contestRating || 'N/A'}`;
+
+        // Make the profile section visible
+        document.querySelector(".profile-info").style.display = "flex";
 
     }
 

@@ -54,12 +54,28 @@ h1 {
     width: 10%;
     padding: 0.4rem;
     cursor: pointer;
-    
 }
 
 /* .stats {
     display: none;
 } */
+
+.profile-info {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;
+    font-weight: 500;
+    font-size: 1.33rem;
+}
+
+#avatar {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid white;
+}
 
 .progress {
     display: flex;
