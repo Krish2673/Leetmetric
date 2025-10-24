@@ -1,62 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leetmetric</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Leetmetric</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    
-    <div class="container">
 
-        <header>
-            <h1>Leetmetric</h1>
-            <button id="theme-toggle">🌞</button>
-        </header>
+  <div class="container">
 
-        <div class="user">
-            <p>Enter your username below:</p>
-            <div class="user-input">
-                <input type="text" placeholder="Enter your username" id="username">
-                <button id="search-button">Search</button>
-            </div>
-        </div>
-        
-        <div class="profile-info">
-            <img id="avatar" alt="User Avatar" />
-            <p id="rank"></p>
-            <p id="contest-rating"></p>
-        </div>        
-        
-        <div class="stats">
-            <div class="progress">
-                <div class="progress-items circle1">
-                    <div class="easy-progress">
-                        <span id="easy-label"></span>
-                        Easy
-                    </div>
-                </div>
-                <div class="progress-items circle2">
-                    <div class="medium-progress">
-                        <span id="medium-label"></span>
-                        Medium
-                    </div>
-                </div>
-                <div class="progress-items circle3">
-                    <div class="hard-progress">
-                        <span id="hard-label"></span>
-                        Hard
-                    </div>
-                </div>
-            </div>
-            <div class="cards">
-                <!-- populate cards from js -->
-            </div>
-        </div>
+    <header>
+      <h1>Leetmetric</h1>
+      <button id="theme-toggle">🌞</button>
+    </header>
 
+    <div class="user">
+      <p>Enter your username below:</p>
+      <div class="user-input">
+        <input type="text" placeholder="Enter your username" id="username"/>
+        <button id="search-button">Search</button>
+      </div>
     </div>
 
-    <script src="script.js"></script>
+    <div class="profile-info">
+      <img id="avatar" alt="User Avatar" />
+      <p id="rank"></p>
+      <p id="contest-rating"></p>
+    </div>
+
+    <div class="total-solved" id="total-solved"></div>
+
+    <div class="stats" id="stats">
+      <div class="progress">
+        <div class="progress-items circle1">
+          <div class="easy-progress">
+            <span id="easy-label">0/0</span>
+            <br>Easy
+          </div>
+        </div>
+        <div class="progress-items circle2">
+          <div class="medium-progress">
+            <span id="medium-label">0/0</span>
+            <br>Medium
+          </div>
+        </div>
+        <div class="progress-items circle3">
+          <div class="hard-progress">
+            <span id="hard-label">0/0</span>
+            <br>Hard
+          </div>
+        </div>
+        <div class="progress-items circle4">
+          <div class="total-progress">
+            <span id="total-label">0/0</span>
+            <br>Total
+          </div>
+        </div>
+      </div>
+
+      <div class="cards"></div>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
